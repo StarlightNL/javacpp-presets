@@ -7,16 +7,17 @@
     <groupId>org.bytedeco</groupId>
     <artifactId>javacpp-presets</artifactId>
     <version>1.5.4-SNAPSHOT</version>
-    <relativePath>../../</relativePath>
+    <relativePath>../../../</relativePath>
   </parent>
 
   <groupId>org.bytedeco</groupId>
-  <artifactId>librealsense2-platform</artifactId>
-  <version>2.29.0-${project.parent.version}</version>
-  <name>JavaCPP Presets Platform for librealsense2</name>
+  <artifactId>librealsense2-platform-gpu</artifactId>
+  <version>2.33.1-${project.parent.version}</version>
+  <name>JavaCPP Presets Platform GPU for librealsense2</name>
 
   <properties>
     <javacpp.moduleId>librealsense2</javacpp.moduleId>
+    <javacpp.platform.extension>-gpu</javacpp.platform.extension>
   </properties>
 
   <dependencies>
@@ -78,7 +79,7 @@
             <configuration>
               <archive>
                 <manifestEntries>
-                  <Class-Path>${javacpp.moduleId}.jar ${javacpp.moduleId}-linux-x86.jar ${javacpp.moduleId}-linux-x86_64.jar ${javacpp.moduleId}-linux-arm64.jar ${javacpp.moduleId}-macosx-x86_64.jar ${javacpp.moduleId}-windows-x86.jar ${javacpp.moduleId}-windows-x86_64.jar</Class-Path>
+                  <Class-Path>${javacpp.moduleId}.jar ${javacpp.moduleId}-linux-x86_64-gpu.jar ${javacpp.moduleId}-linux-arm64-gpu.jar ${javacpp.moduleId}-macosx-x86_64-gpu.jar ${javacpp.moduleId}-windows-x86_64-gpu.ja </Class-Path>
                 </manifestEntries>
               </archive>
             </configuration>
@@ -123,12 +124,11 @@
                   <file>${project.build.directory}/${project.artifactId}.jar</file>
                   <moduleInfoSource>
                     module org.bytedeco.${javacpp.moduleId}.platform {
-                      requires org.bytedeco.${javacpp.moduleId}.linux.x86;
-                      requires org.bytedeco.${javacpp.moduleId}.linux.x86_64;
-                      requires org.bytedeco.${javacpp.moduleId}.linux.arm64;
-                      requires org.bytedeco.${javacpp.moduleId}.macosx.x86_64;
-                      requires org.bytedeco.${javacpp.moduleId}.windows.x86;
-                      requires org.bytedeco.${javacpp.moduleId}.windows.x86_64;
+                      requires transitive org.bytedeco.${javacpp.moduleId};
+                      requires org.bytedeco.${javacpp.moduleId}.linux.x86_64.gpu;
+                      requires org.bytedeco.${javacpp.moduleId}.linux.arm64.gpu;
+                      requires org.bytedeco.${javacpp.moduleId}.macosx.x86_64.gpu;
+                      requires org.bytedeco.${javacpp.moduleId}.windows.x86_64.gpu;
                     }
                   </moduleInfoSource>
                 </module>

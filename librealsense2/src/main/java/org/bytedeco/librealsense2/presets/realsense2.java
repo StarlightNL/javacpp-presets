@@ -38,7 +38,7 @@ import org.bytedeco.javacpp.tools.InfoMapper;
     inherit = javacpp.class,
     value = {
         @Platform(
-            value = {"linux-x86", "macosx-x86", "windows-x86"},
+            value = {"linux-x86", "macosx-x86", "windows-x86", "linux-arm64"},
             compiler = "cpp11",
             include = {
                 "librealsense2/h/rs_types.h",
@@ -56,9 +56,10 @@ import org.bytedeco.javacpp.tools.InfoMapper;
                 "librealsense2/rs_advanced_mode.h",
                 "librealsense2/rsutil.h"
             },
-            link = "realsense2@.2.29"
+            link = "realsense2@.2.33.1"
         ),
-        @Platform(value = "macosx", preload = "usb-1.0@.0", preloadpath = "/usr/local/lib/")
+        @Platform(value = "macosx", preload = "usb-1.0@.0", preloadpath = "/usr/local/lib/"),
+        @Platform(value = {"linux-arm64", "linux-x86_64", "macosx-x86_64", "windows-x86_64"}, extension = "-gpu")
     },
     target = "org.bytedeco.librealsense2",
     global = "org.bytedeco.librealsense2.global.realsense2"

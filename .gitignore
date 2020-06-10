@@ -15,3 +15,7 @@
 # IntelliJ
 *.iml
 .idea
+
+# Visual Studio
+/.vs
+
